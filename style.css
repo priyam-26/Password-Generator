@@ -1,0 +1,175 @@
+:root {
+    --bg: #0e1117;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --card: #1e293b;
+    --border: #334155;
+    font-family: "Montserrat", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    transition: 0.4s ease;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #1e293b, #0f172a);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--text);
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.6rem;
+}
+
+.output {
+    background: #0f172a;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    word-break: break-all;
+}
+
+button {
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+}
+
+.copy {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 12px;
+}
+
+.copy:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.settings {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.range-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+.strength {
+    margin-top: 20px;
+    background: #0f172a;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.strength-bar {
+    height: 6px;
+    background-color: #1e3a8a;
+    border-radius: 999px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.strength-bar div {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    transition: width 0.4s ease;
+}
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #1e293b;
+    padding: 12px 16px;
+    border-radius: 10px;
+    color: white;
+    display: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.toast.show {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
