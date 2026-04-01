@@ -1,22 +1,32 @@
 :root {
-    --bg: #0e1117;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
+    --bg: #000000;
+    --accent: #22d3ee;
+    --accent-hover: #06b6d4;
     --text: #e2e8f0;
     --muted: #94a3b8;
-    --card: #1e293b;
-    --border: #334155;
+
+    /* Subtle glass card */
+    --card: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.08);
+
     font-family: "Montserrat", sans-serif;
 }
 
 * {
     box-sizing: border-box;
-    transition: 0.4s ease;
+    transition: 0.3s ease;
 }
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top, #1e293b, #0f172a);
+
+    /* 🎬 Timeline-style cinematic gradient */
+    background: linear-gradient(
+        to bottom,
+        #001a1a,
+        #000000 60%
+    );
+
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -25,24 +35,38 @@ body {
     color: var(--text);
 }
 
+/* Optional subtle vignette (depth effect) */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.8));
+}
+
+/* Container */
 .container {
     width: 100%;
     max-width: 420px;
     background: var(--card);
+    backdrop-filter: blur(10px);
+
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
+/* Title */
 h1 {
     text-align: center;
     margin-bottom: 24px;
     font-size: 1.6rem;
+    letter-spacing: 1px;
 }
 
+/* Output */
 .output {
-    background: #0f172a;
+    background: rgba(0, 0, 0, 0.6);
     padding: 14px 16px;
     border-radius: 10px;
     border: 1px solid var(--border);
@@ -53,6 +77,7 @@ h1 {
     word-break: break-all;
 }
 
+/* Buttons */
 button {
     cursor: pointer;
     font-weight: 600;
@@ -60,10 +85,11 @@ button {
     border: none;
 }
 
+/* Generate button */
 .btn {
     width: 100%;
     background: var(--accent);
-    color: white;
+    color: black;
     padding: 12px;
     margin-top: 10px;
     font-size: 1rem;
@@ -73,6 +99,11 @@ button {
     background: var(--accent-hover);
 }
 
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* Copy button */
 .copy {
     background: transparent;
     border: 1px solid var(--border);
@@ -82,9 +113,10 @@ button {
 
 .copy:hover {
     background: var(--accent);
-    color: white;
+    color: black;
 }
 
+/* Settings */
 .settings {
     margin-top: 16px;
     display: flex;
@@ -101,8 +133,10 @@ button {
 input[type="range"] {
     width: 100%;
     margin-left: 10px;
+    accent-color: var(--accent);
 }
 
+/* Checkboxes */
 .checkboxes label {
     display: flex;
     align-items: center;
@@ -117,9 +151,10 @@ input[type="checkbox"] {
     accent-color: var(--accent);
 }
 
+/* Strength */
 .strength {
     margin-top: 20px;
-    background: #0f172a;
+    background: rgba(0, 0, 0, 0.6);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 10px 16px;
@@ -129,9 +164,10 @@ input[type="checkbox"] {
     font-size: 0.9rem;
 }
 
+/* Strength bar */
 .strength-bar {
     height: 6px;
-    background-color: #1e3a8a;
+    background: rgba(255,255,255,0.05);
     border-radius: 999px;
     overflow: hidden;
     width: 100%;
@@ -141,25 +177,26 @@ input[type="checkbox"] {
 .strength-bar div {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #22c55e, #16a34a);
-    transition: width 0.4s ease;
+    background: linear-gradient(to right, #22d3ee, #0ea5e9);
+    transition: width 0.3s ease;
 }
 
+/* Toast */
 .toast {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: #1e293b;
+    background: rgba(15, 23, 42, 0.9);
     padding: 12px 16px;
     border-radius: 10px;
     color: white;
     display: none;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
 }
 
 .toast.show {
     display: block;
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -172,4 +209,3 @@ input[type="checkbox"] {
         transform: translateY(0);
     }
 }
-
