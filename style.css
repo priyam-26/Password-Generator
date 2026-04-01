@@ -19,8 +19,6 @@
 
 body {
     margin: 0;
-
-    /* 🎬 Timeline-style cinematic gradient */
     background: linear-gradient(
         to bottom,
         #001a1a,
